@@ -1,11 +1,13 @@
-const axios = require("axios");
 const express = require("express");
-
+const cors = require("cors");
+const {default : axios} = require("axios");
 // Initialize Express app
-const app = express();
 
 // Middleware to parse JSON bodies
+const app = express();
 app.use(express.json());
+app.use(cors({origin: true}));
+
 app.post("/authenticate", async (req, res) => {
   const { username } = req.body;
   // Get or create user on Chat Engine!
